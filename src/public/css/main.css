@@ -40,6 +40,10 @@ label {
   margin-top: 20px;
 }
 
+.ProviderPlans .btn {
+  background-color: #555;
+}
+
 .ProviderPlans-list {
   background-color: #0C1E30;
   padding: 20px;
