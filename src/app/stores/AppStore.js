@@ -10,7 +10,9 @@ const _appState = {
   doctorName: '',
   specialties: [],
   results: [],
-  isFetching: false
+  isFetching: false,
+  isFetchingProviderPlans: {},
+  providerPlans: {}
 };
 
 const AppStore = Object.assign({}, EventEmitter.prototype, {
@@ -45,6 +47,22 @@ const AppStore = Object.assign({}, EventEmitter.prototype, {
 
   isFetching() {
     return _appState.isFetching;
+  },
+
+  isFetchingProviderPlans() {
+    return _appState.isFetchingProviderPlans;
+  },
+
+  isFetchingProviderPlansForProvider(npi) {
+    return !!_appState.isFetchingProviderPlans[npi];
+  },
+
+  getProviderPlans() {
+    return _appState.providerPlans;
+  },
+
+  getProviderPlansForProvider(npi) {
+    return _appState.providerPlans[npi];
   }
 
 });
@@ -76,6 +94,17 @@ AppStore.dispatchToken = AppDispatcher.register((action) => {
 
     case ActionTypes.CHANGE_IS_FETCHING:
       _appState.isFetching = action.isFetching;
+      AppStore.emitChange();
+      break;
+
+    case ActionTypes.CHANGE_IS_FETCHING_PROVIDER_PLANS:
+      _appState.isFetchingProviderPlans[action.npi] = action.isFetching;
+      AppStore.emitChange();
+      break;
+
+    case ActionTypes.CHANGE_PROVIDER_PLANS:
+      _appState.providerPlans[action.npi] = action.providerPlans;
+      _appState.isFetchingProviderPlans[action.npi] = false;
       AppStore.emitChange();
       break;
 

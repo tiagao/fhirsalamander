@@ -36,6 +36,22 @@ export default {
       type: ActionTypes.CHANGE_IS_FETCHING,
       isFetching: isFetching
     });
-  }
+  },
+
+  changeIsFetchingProviderPlans(npi, isFetching) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_IS_FETCHING_PROVIDER_PLANS,
+      npi: npi,
+      isFetching: isFetching
+    });
+  },
+
+  changeProviderPlans(npi, providerPlans) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.CHANGE_PROVIDER_PLANS,
+      npi: npi,
+      providerPlans: providerPlans
+    });
+  },
 
 };

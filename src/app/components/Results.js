@@ -4,12 +4,16 @@ import { PageConstants } from '../constants/AppConstants.js';
 import AppStore from '../stores/AppStore.js';
 import AppActionCreators from '../actions/AppActionCreators.js';
 
+import ProviderPlans from './ProviderPlans.js';
+
 const getStateFromStores = () => {
   return {
     doctorName: AppStore.getDoctorName(),
     specialties: AppStore.getSpecialties(),
     results: AppStore.getResults(),
     isFetching: AppStore.isFetching()
+    // isFetchingProviderPlans: AppStore.isFetchingProviderPlans(),
+    // providerPlans: AppStore.getProviderPlans()
   };
 };
 
@@ -60,7 +64,7 @@ export default class Results extends React.Component {
     let results = (
       <div>
         <h3>Individual Providers</h3>
-        {individualProviders.map((provider) => {
+        {individualProviders.map((provider, i) => {
           return (
             <div className="Provider Provider-Individual">
               <div className="name">{provider.name_first} {provider.name_last}</div>
@@ -68,16 +72,18 @@ export default class Results extends React.Component {
               <div className="speciality">{provider.speciality}</div>
               <div className="label">National ID</div>
               <div className="npi">{provider.npi}</div>
+              <ProviderPlans npi={provider.npi} key={i} />
             </div>
           );
         })}
         <h3>Facility Providers</h3>
-        {facilityProviders.map((provider) => {
+        {facilityProviders.map((provider, i) => {
           return (
             <div className="Provider Provider-Individual">
               <p className="name">{provider.facility_name}</p>
               <div className="label">National ID</div>
               <p className="npi">{provider.npi}</p>
+              <ProviderPlans npi={provider.npi} key={i} />
             </div>
           );
         })}

@@ -85,6 +85,29 @@ app.get('/getResults', function(req, res) {
   });
 });
 
+app.get('/getProviderPlans', function(req, res) {
+  var npi = req.query.npi;
+
+  var query = (
+    "SELECT pp.npi, pl.plan_id, pl.marketing_name, pl.summary_url " +
+    "FROM Plans as pl INNER JOIN ProviderPlans as pp ON (pl.plan_id = pp.plan_id) " +
+    "WHERE pp.npi = ? LIMIT 100"
+  );
+  var queryValues = [npi];
+
+  var connection = res.app.get('connection');
+
+  connection.query(query, queryValues, function(err, results) {
+    if(err) {
+      console.log(err);
+      res.send("[]");
+    } else {
+      console.log(results);
+      res.send(JSON.stringify(results));
+    }
+  });
+});
+
 app.listen((process.env.PORT || 3000), '0.0.0.0', function() {
   console.log('FHIRSalamander listening!');
 });

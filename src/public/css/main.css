@@ -35,3 +35,12 @@ label {
 .Provider .label {
   padding-left: 0;
 }
+
+.ProviderPlans {
+  margin-top: 20px;
+}
+
+.ProviderPlans-list {
+  background-color: #0C1E30;
+  padding: 20px;
+}
