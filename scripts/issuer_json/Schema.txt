@@ -1,0 +1,46 @@
+Plans.json Required Fields:
+---
+plan_id_type (always HIOS-PLAN-ID)
+* plan_id
+* marketing_name
+* summary_url
+plan_contact
+network[]
+formulary[]
+last_updated_on
+
+Providers.json Required Fields:
+---
+* npi
+type (INDIVIDUAL or FACILITY)
+* plans[]
+* last_updated_on
+
+if INDIVIDUAL type:
+* name
+  * first
+  * last
+* addresses[]
+* specialty[]
+* languages[] *** NOT REQUIRED ***
+* accepting (accepting, not accepting, accepting in some locations)
+
+if FACILITY type:
+* facility_name
+* facility_type[]
+* addresses[]
+
+Address Subtype Required Fields
+---
+* address
+* address_2 *** NOT REQUIRED ***
+* city
+* state
+* zip
+* phone
+
+Plans Sub-type Required Fields:
+---
+plan_id_type
+plan_id
+network_tier

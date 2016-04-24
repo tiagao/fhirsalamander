@@ -1,0 +1,7 @@
+scripts/issuer_json/data
+scripts/load_db/data
+node_modules
+.elasticbeanstalk
+.DS_Store
+npm-debug.log
+src/public/build

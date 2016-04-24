@@ -1,0 +1,37 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2C3E50;
+}
+
+label {
+  font-size: 16px;
+}
+
+.back-forward .btn {
+  margin-right: 10px;
+}
+
+.Doctor, .Specialties, .Results {
+  color: #fff;
+}
+
+.Doctor > p,
+.Specialties > p,
+.Results > p {
+  font-size: 21px;
+}
+
+.Provider {
+  background-color: #1C2E40;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.Provider .name {
+  font-size: 21px;
+}
+
+.Provider .label {
+  padding-left: 0;
+}
